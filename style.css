@@ -1,0 +1,155 @@
+/* 手機版樣式 */
+@media (max-width: 767px) {
+    /* 在寬度小於等於 767px 的情況下應用這些樣式 */
+    /* 可以調整元素的大小、位置、顏色等 */
+}
+
+/* 電腦版樣式 */
+@media (min-width: 768px) {
+    /* 在寬度大於等於 768px 的情況下應用這些樣式 */
+    /* 可以調整元素的大小、位置、顏色等 */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background.jpg');
+    background-size: cover;
+    opacity: 0.5;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  
+  li {
+    font-size: 17.5px;
+    font-weight: bold;
+  }
+
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  
+/*
+選單線
+*/
+.line {
+    width: 40px;
+    height: 40px;
+    background: #EBDDCB;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+}
+.line .menu,
+.line .menu::before,
+.line .menu::after {
+    background: #885035;
+    content: '';
+    display: block;
+    height: 2.5px;
+    position: absolute;
+    transition: background ease .1.5s, top ease .1.5s .1.5s, transform ease .1.5s;
+    width: 20px;
+}
+.line .menu {
+    left: 20px;
+    top: 30px;
+}
+
+.line .menu::before {
+    top: -6px;
+}
+
+.line .menu::after {
+    top: 6px;
+}
+/*
+點選選單變叉叉
+*/
+#menu:checked + .line .menu {
+    background: transparent;
+}
+
+#menu:checked + .line .menu::before {
+    transform: rotate(45deg);
+}
+
+#menu:checked + .line .menu::after {
+    transform: rotate(-45deg);
+}
+
+#menu:checked + .line .menu::before,
+#menu:checked + .line .menu::after {
+    top: 0;
+    transition: top ease .1.5s, transform ease .1.5s .1.5s;
+}
+
+/*
+選單開合
+*/
+#menu:checked ~.menu-list {
+    width: 150px;
+}
+
+#menu:checked ~.menu-list.menu-open {
+    opacity: 1;
+}
+
+.menu-list {
+    width: 60px;
+    height: 100vh;
+    background: #EBDDCB;
+    box-shadow: 0 2px 50px #0000001a;
+    padding-top: 50px;
+    position: fixed;
+    z-index: 1;
+    transition: all.3s;
+    overflow: hidden;
+}
+
+.menu-list.menu-open {
+    opacity: 0.5;
+}
+/*
+選單向外推
+*/
+.menu-list ul {
+    list-style: none;
+    margin-left:70px;
+    padding: 0;
+}
+.menu-list ul>li{
+    display:block;
+    width:100px;
+}
+/*
+隱藏核許框
+*/
+input#menu {
+ display: none;
+}
